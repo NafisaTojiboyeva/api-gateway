@@ -1,6 +1,7 @@
 package api
 
 import (
+	v1 "github.com/NafisaTojiboyeva/api-gateway/api/handlers/v1"
 	"github.com/gin-gonic/gin"
 
 	"github.com/NafisaTojiboyeva/api-gateway/config"

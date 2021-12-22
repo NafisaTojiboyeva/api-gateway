@@ -9,6 +9,7 @@ type QueryParams struct {
 	Filters  map[string]string
 	Page     int64
 	Limit    int64
+	Deadline string
 	Ordering []string
 	Search   string
 }
@@ -18,6 +19,7 @@ func ParseQueryParams(queryParams map[string][]string) (*QueryParams, []string) 
 		Filters:  make(map[string]string),
 		Page:     1,
 		Limit:    10,
+		Deadline: "2021-12-01",
 		Ordering: []string{},
 		Search:   "",
 	}
@@ -38,6 +40,11 @@ func ParseQueryParams(queryParams map[string][]string) (*QueryParams, []string) 
 			if err != nil {
 				errStr = append(errStr, "Invalid `limit` param")
 			}
+			continue
+		}
+
+		if key == "deadline" {
+			params.Deadline = value[0]
 			continue
 		}
 
