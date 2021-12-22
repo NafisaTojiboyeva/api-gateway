@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"google.golang.org/grpc/credentials/insecure"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/resolver"
@@ -22,7 +23,7 @@ func (s *serviceManager) ToDoService() pb.ToDoServiceClient {
 	return s.todoService
 }
 
-func NewServiceManager(conf *config.Config) (serviceManager, error) {
+func NewServiceManager(conf *config.Config) (IServiceManager, error) {
 	resolver.SetDefaultScheme("dns")
 
 	connToDo, err := grpc.Dial(
@@ -33,7 +34,7 @@ func NewServiceManager(conf *config.Config) (serviceManager, error) {
 	}
 
 	serviceManager := &serviceManager{
-		todoService: pb.NewServiceClient(connToDo),
+		todoService: pb.NewToDoServiceClient(connToDo),
 	}
 
 	return serviceManager, nil
