@@ -34,7 +34,7 @@ func New(option Option) *gin.Engine {
 	api.GET("/todos", handlerV1.ListTasks)
 	api.PUT("/todos/:id", handlerV1.UpdateTask)
 	api.DELETE("/todos/:id", handlerV1.DeleteTask)
-	api.GET("/todos/:deadline", handlerV1.ListOverdueTasks)
+	api.GET("/todos/overdue", handlerV1.ListOverdueTasks)
 
 	return router
 }

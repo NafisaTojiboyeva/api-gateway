@@ -2,9 +2,9 @@ package service
 
 import (
 	"fmt"
-	"google.golang.org/grpc/credentials/insecure"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/resolver"
 
 	"github.com/NafisaTojiboyeva/api-gateway/config"

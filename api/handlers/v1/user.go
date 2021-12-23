@@ -2,22 +2,23 @@ package v1
 
 import (
 	"context"
-	l "github.com/NafisaTojiboyeva/api-gateway/pkg/logger"
-	"github.com/NafisaTojiboyeva/api-gateway/pkg/utils"
-	"github.com/gin-gonic/gin"
-	"google.golang.org/protobuf/encoding/protojson"
 	"net/http"
 	"time"
 
+	"github.com/gin-gonic/gin"
+	"google.golang.org/protobuf/encoding/protojson"
+
 	pb "github.com/NafisaTojiboyeva/api-gateway/genproto"
+	l "github.com/NafisaTojiboyeva/api-gateway/pkg/logger"
+	"github.com/NafisaTojiboyeva/api-gateway/pkg/utils"
 )
 
 func (h *handlerV1) CreateTask(c *gin.Context) {
 	var (
 		body        pb.Task
-		jspbmarshal protojson.MarshalOptions
+		jspbMarshal protojson.MarshalOptions
 	)
-	jspbmarshal.UseProtoNames = true
+	jspbMarshal.UseProtoNames = true
 
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
@@ -105,7 +106,7 @@ func (h *handlerV1) ListTasks(c *gin.Context) {
 func (h *handlerV1) UpdateTask(c *gin.Context) {
 	var (
 		body        pb.Task
-		jspbMarshal protojson.Marshalptions
+		jspbMarshal protojson.MarshalOptions
 	)
 	jspbMarshal.UseProtoNames = true
 
